@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
 {
 
     public GameObject coin;
+    public GameObject bomb;
     public float startWait;
     public float waveWait;
     public float spawnWait;
@@ -32,11 +33,11 @@ public class GameManager : MonoBehaviour
         UpdateWave();
         UpdateScore();
         // StartCoroutine(StartLevel());
-        
+
         Debug.Log(levelManager.CurrentWave);
         levelManager.CreateLevel(3);
-        
-        
+
+
         StartCoroutine(StartGame());
 
 
@@ -51,13 +52,15 @@ public class GameManager : MonoBehaviour
             this.roundStarted = false;
             StartCoroutine(NextWave());
         }
-        if(!this.levelEnded && this.levelManager.CurrentWave >= this.levelManager.Level.Count && GameObject.FindGameObjectsWithTag("Coin").Length == 0){
+        if (!this.levelEnded && this.levelManager.CurrentWave >= this.levelManager.Level.Count && GameObject.FindGameObjectsWithTag("Coin").Length == 0)
+        {
             this.levelEnded = true;
             StartCoroutine(GameEnd());
         }
 
     }
-    private IEnumerator GameEnd(){
+    private IEnumerator GameEnd()
+    {
         yield return new WaitForSeconds(waveWait);
         this.SetGlobalScore();
         SceneManager.LoadScene("End");
@@ -66,7 +69,7 @@ public class GameManager : MonoBehaviour
     private IEnumerator StartGame()
     {
         yield return new WaitForSeconds(waveWait);
-        
+
         StartCoroutine(NextWave());
         yield break;
 
@@ -75,27 +78,45 @@ public class GameManager : MonoBehaviour
     private IEnumerator NextWave()
     {
         yield return new WaitForSeconds(waveWait);
-        
+
         var currentWave = levelManager.CurrentWave;
         var wave = levelManager.Level[currentWave];
         this.levelManager.IncrementWave();
         this.UpdateWave();
-        //add game objects t
+
         for (int i = 0; i < wave.Count; i++)
         {
             var launchable = levelManager.Level[currentWave][i];
-            Vector3 spawnPosition = new Vector3(Random.Range(-launchable.LaunchPoint.x, launchable.LaunchPoint.x), launchable.LaunchPoint.y, launchable.LaunchPoint.z);
 
-            Quaternion spawnRotation = Quaternion.identity;
-
-            var item = Instantiate(coin, spawnPosition, spawnRotation);
+            InstantiateItem(launchable);
             yield return new WaitForSeconds(spawnWait);
         }
         this.roundStarted = true;
         yield break;
 
     }
+    private void InstantiateItem(Launchable launchable)
+    {
+        Vector3 spawnPosition = new Vector3(Random.Range(-launchable.LaunchPoint.x, launchable.LaunchPoint.x), launchable.LaunchPoint.y, launchable.LaunchPoint.z);
 
+        Quaternion spawnRotation = Quaternion.identity;
+        switch (launchable.LaunchType)
+        {
+            case LaunchType.Coin:
+                Instantiate(coin, spawnPosition, spawnRotation);
+                break;
+            case LaunchType.Bomb:
+                Instantiate(bomb, spawnPosition, spawnRotation);
+                break;
+            default:
+                Debug.Log("Type not available, defaulting to coin.");
+                Instantiate(coin, spawnPosition, spawnRotation);
+                break;
+        }
+
+
+
+    }
     public void IncrementScore(int score)
     {
 
@@ -111,14 +132,19 @@ public class GameManager : MonoBehaviour
     {
         this.scoreText.text = "Score: " + score;
     }
+    //
+    // Summary:
+    //     Update UI with current wave.
     public void UpdateWave()
     {
         this.roundText.text = "Round: " + this.levelManager.CurrentWave;
     }
-    public void SetGlobalScore(){
+    public void SetGlobalScore()
+    {
         StateManager.PlayerScore = this.score;
     }
-    public int GetGlobalScore(){
+    public int GetGlobalScore()
+    {
         return StateManager.PlayerScore;
     }
 }

@@ -35,20 +35,28 @@ public class LevelManager
             this.CreateWave();
         }
     }
+    /**
+    This method needs to change when we start generating levels from actual data and not randomly.
+     */
     public void CreateWave()
     {
         var wave = new List<Launchable>();
         for (int i = 0; i < 5; i++)
         {
-            wave.Add(this.CreateCoin(100, this.RandomSpawnPoint()));
+            var item = i % 2 == 0?this.CreateCoin(100, this.RandomSpawnPoint()) : this.CreateBomb(100, this.RandomSpawnPoint());
+
+            wave.Add(item);
         }
         this.Level.Add(wave);
     }
 
 	private Launchable CreateCoin(int score, Vector3 spawnValues){
-        Debug.Log(coinFactory);
 		var coin = coinFactory.CreateLaunchable(score, spawnValues);
 		return coin;
+	}
+    private Launchable CreateBomb(int score, Vector3 spawnValues){
+		var bomb = bombFactory.CreateLaunchable(score, spawnValues);
+		return bomb;
 	}
 	private Vector3 RandomSpawnPoint(){
 		return new Vector3(Random.Range(-SpawnValues.x, SpawnValues.x), SpawnValues.y, SpawnValues.z);
