@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using EZCameraShake;
 using UnityEngine;
 
 public class BombController : MonoBehaviour
@@ -23,10 +24,9 @@ public class BombController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
     }
 	private void OnMouseDown() {
-		// gameManager.IncrementScore(score);
+		CameraShaker.Instance.ShakeOnce(8f, 4f,.1f,1f);
 		Instantiate(explosion, transform.position,transform.rotation);
 		Destroy(gameObject);
 	} 
