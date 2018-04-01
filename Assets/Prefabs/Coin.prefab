@@ -126,7 +126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   score: 10
-  sparkle: {fileID: 1010309980117116, guid: a835df143fbc0b248bc8963abc5e452e, type: 2}
+  sparkle: {fileID: 1842134186626574, guid: f8df271363dd8c04ba66d077a75c53ea, type: 2}
 --- !u!136 &136770596767780218
 CapsuleCollider:
   m_ObjectHideFlags: 1

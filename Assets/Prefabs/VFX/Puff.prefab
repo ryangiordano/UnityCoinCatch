@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 114178913637485576}
   - component: {fileID: 199100932051040404}
   m_Layer: 0
-  m_Name: Sparkle
+  m_Name: Puff
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
