@@ -21,13 +21,26 @@ GameObject:
   - component: {fileID: 224826296323942370}
   - component: {fileID: 222005139913270702}
   - component: {fileID: 114439775765760904}
+  - component: {fileID: 114363866413411132}
   m_Layer: 5
   m_Name: Heart
-  m_TagString: Untagged
+  m_TagString: Heart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &114363866413411132
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1959243061748090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f77e63fd788bac4a9364e4cce290e68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  heartExplode: {fileID: 100008, guid: d62009068345ff746a8f99643552c0e1, type: 2}
 --- !u!114 &114439775765760904
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -47,7 +60,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Texture: {fileID: 2800000, guid: a88b59575d092d64fa6ce4edd139f0c9, type: 3}
+  m_Texture: {fileID: 2800000, guid: db92ef2e20ec9464298b443f43cd9e2e, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0

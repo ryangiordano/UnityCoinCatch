@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     public Text roundText;
     public GameObject explosion;
     public LevelManager levelManager;
+    public GameObject heartContainer;
     private bool levelEnded;
     public Vector3 SpawnValues;
 
@@ -142,6 +143,11 @@ public class GameManager : MonoBehaviour
     public void SetGlobalScore()
     {
         StateManager.PlayerScore = this.score;
+    }
+    public void BombTapped(){
+        var controller = heartContainer.GetComponent<HeartContainerController>();
+        controller.RemoveHeart();
+
     }
     public int GetGlobalScore()
     {

@@ -28,6 +28,7 @@ public class BombController : MonoBehaviour
 	private void OnMouseDown() {
 		CameraShaker.Instance.ShakeOnce(8f, 4f,.1f,1f);
 		Instantiate(explosion, transform.position,transform.rotation);
+		gameManager.BombTapped();
 		Destroy(gameObject);
 	} 
 }
