@@ -5,7 +5,8 @@ using UnityEngine;
 public class HeartController : MonoBehaviour {
 	public Animator animator;
 	public ShrinkBehavior shrinkBehavior;
-	private bool exploded;
+	public bool shrinking;
+	public bool exploded;
 	public GameObject heartExplode;
 	// Use this for initialization
 	void Start () {
@@ -20,7 +21,9 @@ public class HeartController : MonoBehaviour {
 		}
 	}
 	public void ShrinkHeart(){
+		shrinking=true;
 		animator.SetTrigger("LossHeart");
+		
 		
 	}
 	public void HeartExplode(){

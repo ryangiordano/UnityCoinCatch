@@ -23,7 +23,7 @@ public class HeartContainerController : MonoBehaviour {
 		var heartList = new List<Transform>();
 		if(transform.childCount> 0){
 			foreach(Transform child in transform){
-				if(child.CompareTag("Heart")){
+				if(child.CompareTag("Heart") && !child.GetComponent<HeartController>().shrinking){
 					heartList.Add(child);
 				}
 			}
