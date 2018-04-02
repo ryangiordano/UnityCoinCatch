@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 222005139913270702}
   - component: {fileID: 114439775765760904}
   - component: {fileID: 114363866413411132}
+  - component: {fileID: 95770452566600188}
   m_Layer: 5
   m_Name: Heart
   m_TagString: Heart
@@ -29,6 +30,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!95 &95770452566600188
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1959243061748090}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a0ea140074f269f49b187c009d82eae1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114363866413411132
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -40,7 +58,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f77e63fd788bac4a9364e4cce290e68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  heartExplode: {fileID: 100008, guid: d62009068345ff746a8f99643552c0e1, type: 2}
+  animator: {fileID: 0}
+  heartExplode: {fileID: 1813314558577914, guid: b4ac3a150558f754aa1fa7529acb6ce2,
+    type: 2}
 --- !u!114 &114439775765760904
 MonoBehaviour:
   m_ObjectHideFlags: 1

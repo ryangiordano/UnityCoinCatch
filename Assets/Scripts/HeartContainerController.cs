@@ -30,19 +30,19 @@ public class HeartContainerController : MonoBehaviour {
 			Debug.Log(heartList[heartList.Count-1]);
 			var heart = heartList[heartList.Count-1].GetComponent<HeartController>();
 			Debug.Log(heart);
-			heart.HeartExplode();
+			heart.ShrinkHeart();
 			CurrentHealth--;
 		}
 	}
 	private void DrawHearts(){
-		float x = -70;
+		float x = 30;
         Quaternion spawnRotation = Quaternion.identity;
 		
 		for(int i =0; i<MaxHealth; i++){
 			var heart = Instantiate(Heart,new Vector3(x,0,0), spawnRotation, this.gameObject.transform);
 			var transform = heart.GetComponent<RectTransform>();
 			transform.localPosition = new Vector3(x,0,0);
-			x +=50;
+			x +=60;
 		}
 	}
 }
