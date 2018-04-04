@@ -20,6 +20,8 @@ public class GameManager : MonoBehaviour
     public GameObject explosion;
     public LevelManager levelManager;
     public GameObject heartContainer;
+    public HeartContainerController heartContainerController;
+    public CoinRushController coinRushController;
     public GameObject coinRushContainer;
     private bool levelEnded;
     public Vector3 SpawnValues;
@@ -30,6 +32,8 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         this.levelManager = new LevelManager(SpawnValues);
+        coinRushController=  coinRushContainer.GetComponent<CoinRushController>();
+        heartContainerController = heartContainer.GetComponent<HeartContainerController>();
         this.roundStarted = false;
         this.levelEnded = false;
         UpdateWave();
@@ -113,8 +117,8 @@ public class GameManager : MonoBehaviour
     }
     public void IncrementScore(int score)
     {
-        var controller = coinRushContainer.GetComponent<CoinRushController>();
-        controller.IncrementMeter();
+        
+        coinRushController.IncrementMeter();
         this.score += score;
         UpdateScore();
 
@@ -139,8 +143,8 @@ public class GameManager : MonoBehaviour
         StateManager.PlayerScore = this.score;
     }
     public void BombTapped(){
-        var controller = heartContainer.GetComponent<HeartContainerController>();
-        controller.RemoveHeart();
+        coinRushController.ResetBar();
+        heartContainerController.RemoveHeart();
 
     }
     public int GetGlobalScore()
