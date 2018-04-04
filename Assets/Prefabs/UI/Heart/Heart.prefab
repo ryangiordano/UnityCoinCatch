@@ -59,6 +59,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
+  shrinkBehavior: {fileID: 0}
+  shrinking: 0
+  exploded: 0
   heartExplode: {fileID: 1813314558577914, guid: b4ac3a150558f754aa1fa7529acb6ce2,
     type: 2}
 --- !u!114 &114439775765760904

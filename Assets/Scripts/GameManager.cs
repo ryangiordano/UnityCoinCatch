@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     public GameObject explosion;
     public LevelManager levelManager;
     public GameObject heartContainer;
+    public GameObject coinRushContainer;
     private bool levelEnded;
     public Vector3 SpawnValues;
 
@@ -33,16 +34,8 @@ public class GameManager : MonoBehaviour
         this.levelEnded = false;
         UpdateWave();
         UpdateScore();
-        // StartCoroutine(StartLevel());
-
-        Debug.Log(levelManager.CurrentWave);
         levelManager.CreateLevel(3);
-
-
         StartCoroutine(StartGame());
-
-
-
     }
 
     // Update is called once per frame
@@ -120,7 +113,8 @@ public class GameManager : MonoBehaviour
     }
     public void IncrementScore(int score)
     {
-
+        var controller = coinRushContainer.GetComponent<CoinRushController>();
+        controller.IncrementMeter();
         this.score += score;
         UpdateScore();
 

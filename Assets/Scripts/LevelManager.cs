@@ -41,7 +41,7 @@ public class LevelManager
     public void CreateWave()
     {
         var wave = new List<Launchable>();
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < 10; i++)
         {
             var item = i % 2 == 0?this.CreateCoin(100, this.RandomSpawnPoint()) : this.CreateBomb(100, this.RandomSpawnPoint());
 
