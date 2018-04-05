@@ -149,7 +149,9 @@ MonoBehaviour:
   roundText: {fileID: 748617043}
   explosion: {fileID: 0}
   heartContainer: {fileID: 1016244230}
-  coinRushContainer: {fileID: 0}
+  heartContainerController: {fileID: 0}
+  coinRushController: {fileID: 0}
+  coinRushContainer: {fileID: 928211986}
   SpawnValues: {x: 10, y: -10, z: 0}
 --- !u!4 &55729257
 Transform:
@@ -952,7 +954,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1534498505}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.135, y: -0.924, z: 8.09}
+  m_LocalPosition: {x: 0.135, y: -0.924, z: 0}
   m_LocalScale: {x: 1.2702608, y: 0.07573342, z: 1}
   m_Children:
   - {fileID: 1578505297}
