@@ -55,6 +55,10 @@ public class GameManager : MonoBehaviour
             this.levelEnded = true;
             StartCoroutine(GameEnd());
         }
+        if(!this.levelEnded && this.heartContainerController.CurrentHealth <=0){
+            this.levelEnded = true;
+            StartCoroutine(GameEnd());
+        }
 
     }
     private IEnumerator GameEnd()

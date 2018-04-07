@@ -8,8 +8,9 @@ public class LaunchController : MonoBehaviour {
 	public float tumble;
 	// Use this for initialization
 	void Start () {
+
 		rigidbody = GetComponent<Rigidbody>();
-		rigidbody.AddForce(0,thrust,0,ForceMode.Impulse);
+		rigidbody.AddForce(Random.Range(-5,5),Random.Range(25,30),0,ForceMode.Impulse);
 		rigidbody.angularVelocity = Random.insideUnitSphere * tumble;
 		
 	}

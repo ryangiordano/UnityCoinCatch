@@ -37,7 +37,6 @@ public class CoinRushController : MonoBehaviour
             coinCombo++;
             var y = coinRushMeter.GetComponent<RectTransform>().localScale.y;
             var z = coinRushMeter.GetComponent<RectTransform>().localScale.z;
-            // coinRushMeter.GetComponent<RectTransform>().sizeDelta = new Vector2(coinCombo * meterMaxWidth / 10, y);
             iTween.ScaleTo(coinRushMeter,new Vector3((float)coinCombo/10,y,z),.5f);
   
         }
