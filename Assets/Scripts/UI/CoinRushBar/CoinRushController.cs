@@ -14,10 +14,7 @@ public class CoinRushController : MonoBehaviour
     void Start()
     {
         coinCombo = 0;
-        var barSize = coinRushBar.GetComponent<RectTransform>().sizeDelta;
-        barWidth = barSize.x;
-        meterMaxWidth = barWidth - 20;
-        Debug.Log(barSize);
+
     }
 
     // Update is called once per frame
@@ -28,16 +25,21 @@ public class CoinRushController : MonoBehaviour
     public void ResetBar()
     {
         coinCombo = 0;
-        var y = coinRushMeter.GetComponent<RectTransform>().sizeDelta.y;
-        coinRushMeter.GetComponent<RectTransform>().sizeDelta = new Vector2(0, y);
+        var y = coinRushMeter.GetComponent<RectTransform>().localScale.y;
+        var z = coinRushMeter.GetComponent<RectTransform>().localScale.z;
+        iTween.ScaleTo(coinRushMeter,new Vector3(0,y,z),.5f);
+        
     }
     public void IncrementMeter()
     {
         if (!coinRush && coinCombo < 10)
         {
             coinCombo++;
-            var y = coinRushMeter.GetComponent<RectTransform>().sizeDelta.y;
-            coinRushMeter.GetComponent<RectTransform>().sizeDelta = new Vector2(coinCombo * meterMaxWidth / 10, y);
+            var y = coinRushMeter.GetComponent<RectTransform>().localScale.y;
+            var z = coinRushMeter.GetComponent<RectTransform>().localScale.z;
+            // coinRushMeter.GetComponent<RectTransform>().sizeDelta = new Vector2(coinCombo * meterMaxWidth / 10, y);
+            iTween.ScaleTo(coinRushMeter,new Vector3((float)coinCombo/10,y,z),.5f);
+  
         }
 
     }
