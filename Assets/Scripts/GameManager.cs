@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour
         this.levelEnded = false;
         UpdateWave();
         UpdateScore();
-        levelManager.CreateLevel(3);
+        levelManager.CreateLevel(10);
         StartCoroutine(StartGame());
     }
 
@@ -123,7 +123,7 @@ public class GameManager : MonoBehaviour
     {
         
         coinRushController.IncrementMeter();
-        this.score += score;
+        this.score += BonusMultiplier.GetScore(score);
         UpdateScore();
 
     }
