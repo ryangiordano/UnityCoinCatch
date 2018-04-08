@@ -5,53 +5,69 @@ using UnityEngine;
 
 public class CoinRushController : MonoBehaviour
 {
-    private int coinCombo;
     private bool coinRush = false;
     private bool bonusActive;
     public GameObject coinRushBar;
     public GameObject coinRushMeter;
     public GameObject twoTimesMultiplier;
-    public GameObject fourTimesMultiplier;
+    // public GameObject fourTimesMultiplier;
+    public GameObject shockWave;
+    public GameObject sparkle;
     private float barWidth;
     private float meterMaxWidth;
     // Use this for initialization
     void Start()
     {
-        coinCombo = 0;
-
+        StateManager.CoinStreak = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(coinRush && !bonusActive){
-            bonusActive = true;
-            twoTimesMultiplier.SetActive(true);
-            BonusMultiplier.SetMultiplierAmount(2);
-
+        if (coinRush && !bonusActive)
+        {
+            CoinRushActive(2);
         }
+    }
+
+    public void CoinRushActive(int bonus)
+    {
+        bonusActive = true;
+        twoTimesMultiplier.SetActive(true);
+        BonusMultiplier.SetMultiplierAmount(bonus);
+        coinRushMeter.GetComponent<Animator>().SetBool("CoinRush", true);
+    }
+    public void FlashGreen()
+    {
+
+    }
+    public void CoinRushInactive()
+    {
+        coinRush = false;
+        BonusMultiplier.ResetMultiplierAmount();
+        bonusActive = false;
+        twoTimesMultiplier.SetActive(false);
+        coinRushMeter.GetComponent<Animator>().SetBool("CoinRush", false);
     }
     public void ResetBar()
     {
-        coinCombo = 0;
+        StateManager.CoinStreak = 0;
         var y = coinRushMeter.GetComponent<RectTransform>().localScale.y;
         var z = coinRushMeter.GetComponent<RectTransform>().localScale.z;
-        iTween.ScaleTo(coinRushMeter,new Vector3(0,y,z),.5f);
-        coinRush = false;
-        BonusMultiplier.ResetMultiplierAmount();
-        bonusActive =false;
-        twoTimesMultiplier.SetActive(false);
-        
+        iTween.ScaleTo(coinRushMeter, new Vector3(0, y, z), .5f);
+        CoinRushInactive();
+
     }
     public void IncrementMeter()
     {
-        if (!coinRush && coinCombo < 10)
+        if (!coinRush && StateManager.CoinStreak < 10)
         {
-            coinCombo++;
+            StateManager.CoinStreak++;
             var y = coinRushMeter.GetComponent<RectTransform>().localScale.y;
             var z = coinRushMeter.GetComponent<RectTransform>().localScale.z;
-            iTween.ScaleTo(coinRushMeter,new Vector3((float)coinCombo/10,y,z),.5f);
-            if(coinCombo>=10){
+            iTween.ScaleTo(coinRushMeter, new Vector3((float)StateManager.CoinStreak / 10, y, z), .5f);
+            if (StateManager.CoinStreak >= 10)
+            {
                 coinRush = true;
             }
         }

@@ -126,7 +126,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   score: 10
-  sparkle: {fileID: 1915757491786528, guid: cd0527257509d5f469f401d635651217, type: 2}
+  midSparkle: {fileID: 1842134186626574, guid: f8df271363dd8c04ba66d077a75c53ea, type: 2}
+  largeSparkle: {fileID: 1053098273986084, guid: 5ac4ea54a6af6bc408522980f49088be,
+    type: 2}
+  smallSparkle: {fileID: 1915757491786528, guid: cd0527257509d5f469f401d635651217,
+    type: 2}
 --- !u!136 &136770596767780218
 CapsuleCollider:
   m_ObjectHideFlags: 1

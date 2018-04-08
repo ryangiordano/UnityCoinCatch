@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class CoinController : MonoBehaviour {
 	public int score;
-	
+	public GameObject midSparkle;
+	public GameObject largeSparkle;
 	private GameManager gameManager;
-	public GameObject sparkle;
+	public GameObject smallSparkle;
 	// Use this for initialization
 	void Start () {
 		GameObject gameManagerObject =  GameObject.FindWithTag("GameController");
@@ -24,6 +25,9 @@ public class CoinController : MonoBehaviour {
 	}
 	private void OnMouseDown() {
 		gameManager.IncrementScore(score);
+		var sparkle = StateManager.CoinStreak <= 5 ? smallSparkle
+					: StateManager.CoinStreak <10 ? midSparkle
+					:largeSparkle;
 		Instantiate(sparkle, transform.position,transform.rotation);
 		Destroy(gameObject);
 	} 
