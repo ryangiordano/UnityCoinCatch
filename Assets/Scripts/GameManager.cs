@@ -147,7 +147,7 @@ public class GameManager : MonoBehaviour
         StateManager.PlayerScore = this.score;
     }
     public void BombTapped(){
-        coinRushController.ResetBar();
+        StartCoroutine(coinRushController.ResetBar());
         heartContainerController.RemoveHeart();
 
     }
